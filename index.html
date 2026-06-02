@@ -829,19 +829,41 @@ blockquote.p-quote {
 }
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE (UPDATED)
    ============================================================ */
 @media (max-width:1024px) {
   .sc { padding:0 40px; }
-  #home .sc { grid-template-columns:1fr; }
-  .h-right { display:none; }
-  .profil-grid,.resume-cols,.contact-grid { grid-template-columns:1fr; gap:50px; }
+  #home .sc { 
+    grid-template-columns:1fr; 
+    height: auto; /* Biarkan tinggi auto agar tidak memotong konten di mobile */
+    padding-bottom: 60px;
+  }
+  
+  /* Tampilkan kembali h-right, beri flexbox agar posisinya rapi di bawah text */
+  .h-right { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 40px 0;
+  }
+  
+  .profil-grid, .resume-cols, .contact-grid { grid-template-columns:1fr; gap:50px; }
   .proj-grid { grid-template-columns:repeat(2,1fr); }
-  #profil .sc,#resume .sc,#project .sc,#contact .sc { padding:100px 40px; }
+  #profil .sc, #resume .sc, #project .sc, #contact .sc { padding:100px 40px; }
 }
+
 @media (max-width:640px) {
   .proj-grid { grid-template-columns:1fr; }
-  .h-left { padding:80px 40px; }
+  .h-left { padding: 120px 40px 40px 40px; } /* Sesuaikan padding atas */
+  .h-name { font-size: 3rem; } /* Perkecil ukuran font nama agar tidak wrap berantakan */
+  
+  /* Efek scaling untuk mengecilkan struktur lingkaran & foto agar pas di layar HP */
+  .pnw {
+    transform: scale(0.65); /* Mengecilkan komponen sebesar 35% */
+    transform-origin: center center;
+    margin-top: -50px; /* Menyesuaikan jarak space pasca scaling */
+    margin-bottom: -50px;
+  }
 }
 </style>
 </head>
@@ -910,6 +932,7 @@ blockquote.p-quote {
     </div>
   </div>
 </section>
+
 
 <!-- ============================================================
      PROFIL
